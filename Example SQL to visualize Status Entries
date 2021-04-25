@@ -1,0 +1,11 @@
+Select 
+UNIX_TIMESTAMP(`TIMESTAMP`) as time_sec,
+CASE WHEN value = 'dhw' THEN 20 ELSE 10 END as value,
+'Valve Position:Heizung' as metric
+From history
+WHERE
+  $__timeFilter(TIMESTAMP) AND
+  DEVICE = 'vitoconnect' AND
+  READING = 'heating.valves.diverter.heatDhw.position'
+ORDER BY TIMESTAMP asc
+
