@@ -1,0 +1,11 @@
+SELECT
+UNIX_TIMESTAMP(`TIMESTAMP`) as time_sec,
+  CAST(`VALUE` AS DECIMAL(10, 6)) as value,
+  'Aussentemperatur' as metric
+FROM `history`
+
+WHERE
+  $__timeFilter(TIMESTAMP) AND
+  DEVICE = 'vitoconnect' AND
+  READING = 'Aussentemperatur'
+ORDER BY TIMESTAMP
