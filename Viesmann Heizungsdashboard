@@ -40,12 +40,12 @@
       "id": 2,
       "legend": {
         "avg": false,
-        "current": false,
+        "current": true,
         "max": false,
         "min": false,
         "show": true,
         "total": false,
-        "values": false
+        "values": true
       },
       "lines": true,
       "linewidth": 1,
@@ -160,12 +160,12 @@
       "id": 9,
       "legend": {
         "avg": false,
-        "current": false,
+        "current": true,
         "max": false,
         "min": false,
         "show": true,
         "total": false,
-        "values": false
+        "values": true
       },
       "lines": true,
       "linewidth": 1,
@@ -183,6 +183,33 @@
       "stack": false,
       "steppedLine": false,
       "targets": [
+        {
+          "format": "time_series",
+          "group": [],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\nUNIX_TIMESTAMP(`TIMESTAMP`) as time_sec,\n  CAST(`VALUE` AS DECIMAL(10, 6)) as value,\n  'Speicher WW (oben)' as metric\nFROM `history`\n\nWHERE\n  $__timeFilter(TIMESTAMP) AND\n  DEVICE = 'vitoconnect' AND\n  READING = 'WW-Isttemperatur'\nORDER BY TIMESTAMP",
+          "refId": "D",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
         {
           "format": "time_series",
           "group": [],
@@ -217,33 +244,6 @@
           "rawQuery": true,
           "rawSql": "SELECT\nUNIX_TIMESTAMP(`TIMESTAMP`) as time_sec,\n  CAST(`VALUE` AS DECIMAL(10, 6)) as value,\n  'Speicher Solar (unten)' as metric\nFROM `history`\n\nWHERE\n  $__timeFilter(TIMESTAMP) AND\n  DEVICE = 'vitoconnect' AND\n  READING = 'Solar_Sensor_Temperatur_WW'\nORDER BY TIMESTAMP",
           "refId": "B",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "column"
-              }
-            ]
-          ],
-          "timeColumn": "time",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        },
-        {
-          "format": "time_series",
-          "group": [],
-          "hide": false,
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT\nUNIX_TIMESTAMP(`TIMESTAMP`) as time_sec,\n  CAST(`VALUE` AS DECIMAL(10, 6)) as value,\n  'Speicher WW (oben)' as metric\nFROM `history`\n\nWHERE\n  $__timeFilter(TIMESTAMP) AND\n  DEVICE = 'vitoconnect' AND\n  READING = 'WW-Isttemperatur'\nORDER BY TIMESTAMP",
-          "refId": "D",
           "select": [
             [
               {
@@ -336,8 +336,10 @@
     },
     {
       "aliasColors": {
+        "HK Rücklauf": "dark-blue",
         "HK2 Ist-Heizkörper": "dark-red",
         "HK2 Pumpe:aktiv": "light-red",
+        "HK2 Pumpe:aktiv(15)": "light-red",
         "HK3 Ist-Fußboden": "orange",
         "HK3 Pumpe:aktiv": "yellow"
       },
@@ -349,7 +351,7 @@
         "defaults": {},
         "overrides": []
       },
-      "fill": 1,
+      "fill": 0,
       "fillGradient": 0,
       "gridPos": {
         "h": 9,
@@ -361,12 +363,12 @@
       "id": 11,
       "legend": {
         "avg": false,
-        "current": false,
+        "current": true,
         "max": false,
         "min": false,
         "show": true,
         "total": false,
-        "values": false
+        "values": true
       },
       "lines": true,
       "linewidth": 1,
@@ -382,12 +384,12 @@
       "seriesOverrides": [
         {
           "$$hashKey": "object:2483",
-          "alias": "HK2 Pumpe:aktiv",
+          "alias": "HK2 Pumpe:aktiv(15)",
           "fill": 0
         },
         {
           "$$hashKey": "object:2503",
-          "alias": "HK3 Pumpe:aktiv",
+          "alias": "HK3 Pumpe:aktiv(5)",
           "fill": 0
         }
       ],
@@ -455,7 +457,7 @@
           "hide": false,
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "Select \nUNIX_TIMESTAMP(`TIMESTAMP`) as time_sec,\nCASE WHEN value = 'on' THEN 15 ELSE 10 END as value,\n'HK2 Pumpe:aktiv' as metric\nFrom history\nWHERE\n  $__timeFilter(TIMESTAMP) AND\n  DEVICE = 'vitoconnect' AND\n  READING = 'HK2-Zirkulationspumpe'\nORDER BY TIMESTAMP asc",
+          "rawSql": "Select \nUNIX_TIMESTAMP(`TIMESTAMP`) as time_sec,\nCASE WHEN value = 'on' THEN 15 ELSE 10 END as value,\n'HK2 Pumpe:aktiv(15)' as metric\nFrom history\nWHERE\n  $__timeFilter(TIMESTAMP) AND\n  DEVICE = 'vitoconnect' AND\n  READING = 'HK2-Zirkulationspumpe'\nORDER BY TIMESTAMP asc",
           "refId": "C",
           "select": [
             [
@@ -482,8 +484,35 @@
           "hide": false,
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "Select \nUNIX_TIMESTAMP(`TIMESTAMP`) as time_sec,\nCASE WHEN value = 'on' THEN 5 ELSE 0 END as value,\n'HK3 Pumpe:aktiv' as metric\nFrom history\nWHERE\n  $__timeFilter(TIMESTAMP) AND\n  DEVICE = 'vitoconnect' AND\n  READING = 'HK3-Zirkulationspumpe'\nORDER BY TIMESTAMP asc",
+          "rawSql": "Select \nUNIX_TIMESTAMP(`TIMESTAMP`) as time_sec,\nCASE WHEN value = 'on' THEN 5 ELSE 0 END as value,\n'HK3 Pumpe:aktiv(5)' as metric\nFrom history\nWHERE\n  $__timeFilter(TIMESTAMP) AND\n  DEVICE = 'vitoconnect' AND\n  READING = 'HK3-Zirkulationspumpe'\nORDER BY TIMESTAMP asc",
           "refId": "D",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "format": "time_series",
+          "group": [],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\nUNIX_TIMESTAMP(`TIMESTAMP`) as time_sec,\n  CAST(`VALUE` AS DECIMAL(10, 6)) as value,\n  'HK Rücklauf' as metric\nFROM `history`\n\nWHERE\n  $__timeFilter(TIMESTAMP) AND\n  DEVICE = 'ESPEasy_Heizung_NodeMCU_V1_Ruecklauf_HZKL' AND\n  READING = 'Temperature'\nORDER BY TIMESTAMP\n",
+          "refId": "E",
           "select": [
             [
               {
@@ -586,12 +615,12 @@
       "id": 3,
       "legend": {
         "avg": false,
-        "current": false,
+        "current": true,
         "max": false,
         "min": false,
         "show": true,
         "total": false,
-        "values": false
+        "values": true
       },
       "lines": true,
       "linewidth": 1,
@@ -777,9 +806,11 @@
       "aliasColors": {
         "Brenner extern gesperrt (96)": "red",
         "Brenner:Brenner_aktiv": "dark-orange",
-        "Valve Position:Warmwasser": "blue"
+        "Brenner:Brenner_aktiv(8)": "orange",
+        "Valve Position:Warmwasser": "blue",
+        "Valve Position:Warmwasser(20)": "dark-purple"
       },
-      "bars": true,
+      "bars": false,
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
@@ -789,7 +820,7 @@
         "overrides": []
       },
       "fill": 1,
-      "fillGradient": 2,
+      "fillGradient": 4,
       "gridPos": {
         "h": 6,
         "w": 23,
@@ -800,18 +831,20 @@
       "id": 5,
       "legend": {
         "avg": false,
-        "current": false,
+        "current": true,
+        "hideEmpty": false,
+        "hideZero": false,
         "max": false,
         "min": false,
         "show": true,
         "total": false,
-        "values": false
+        "values": true
       },
-      "lines": false,
-      "linewidth": 1,
+      "lines": true,
+      "linewidth": 3,
       "nullPointMode": "connected",
       "options": {
-        "alertThreshold": true
+        "alertThreshold": false
       },
       "percentage": false,
       "pluginVersion": "7.5.2",
@@ -821,7 +854,7 @@
       "seriesOverrides": [],
       "spaceLength": 10,
       "stack": false,
-      "steppedLine": false,
+      "steppedLine": true,
       "targets": [
         {
           "format": "time_series",
@@ -829,33 +862,7 @@
           "hide": false,
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "Select \nUNIX_TIMESTAMP(`TIMESTAMP`) as time_sec,\nCASE WHEN value = '1' THEN 5 ELSE 0 END as value,\n'Brenner:Brenner_aktiv' as metric\nFrom history\nWHERE\n  $__timeFilter(TIMESTAMP) AND\n  DEVICE = 'vitoconnect' AND\n  READING = 'Brenner_aktiv'\nORDER BY TIMESTAMP asc\n",
-          "refId": "C",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "column"
-              }
-            ]
-          ],
-          "timeColumn": "time",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        },
-        {
-          "format": "time_series",
-          "group": [],
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "Select \nUNIX_TIMESTAMP(`TIMESTAMP`) as time_sec,\nCASE WHEN value = 'dhw' THEN 20 ELSE 10 END as value,\n'Valve Position:Warmwasser' as metric\nFrom history\nWHERE\n  $__timeFilter(TIMESTAMP) AND\n  DEVICE = 'vitoconnect' AND\n  READING = 'heating.valves.diverter.heatDhw.position'\nORDER BY TIMESTAMP asc",
+          "rawSql": "Select \nUNIX_TIMESTAMP(`TIMESTAMP`) as time_sec,\nCASE WHEN value = 'dhw' THEN 20 ELSE 10 END as value,\n'Valve Position:Warmwasser(20)' as metric\nFrom history\nWHERE\n  $__timeFilter(TIMESTAMP) AND\n  DEVICE = 'vitoconnect' AND\n  READING = 'heating.valves.diverter.heatDhw.position'\nORDER BY TIMESTAMP asc",
           "refId": "A",
           "select": [
             [
@@ -882,7 +889,7 @@
           "hide": false,
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "Select \nUNIX_TIMESTAMP(`TIMESTAMP`) as time_sec,\nCASE WHEN value = 'on' THEN 5 ELSE 0 END as value,\n'Brenner extern gesperrt (96)' as metric\nFrom history\nWHERE\n  $__timeFilter(TIMESTAMP) AND\n  DEVICE = 'ESPEasy_Heizung_NodeMCU_V1_Heizung_sperren' AND\n  READING = 'State'\nORDER BY TIMESTAMP asc",
+          "rawSql": "Select \nUNIX_TIMESTAMP(`TIMESTAMP`) as time_sec,\nCASE WHEN value = 'on' THEN 4 ELSE 0 END as value,\n'Brenner extern gesperrt (96)' as metric\nFrom history\nWHERE\n  $__timeFilter(TIMESTAMP) AND\n  DEVICE = 'ESPEasy_Heizung_NodeMCU_V1_Heizung_sperren' AND\n  READING = 'State'\nORDER BY TIMESTAMP asc",
           "refId": "B",
           "select": [
             [
@@ -908,9 +915,9 @@
           "group": [],
           "hide": false,
           "metricColumn": "none",
-          "rawQuery": false,
-          "rawSql": "SELECT\n  UNIX_TIMESTAMP(<time_column>) as time_sec,\n  <value column> as value,\n  <series name column> as metric\nFROM <table name>\nWHERE $__timeFilter(time_column)\nORDER BY <time_column> ASC\n",
-          "refId": "D",
+          "rawQuery": true,
+          "rawSql": "Select \nUNIX_TIMESTAMP(`TIMESTAMP`) as time_sec,\nCASE WHEN value = '1' then 8 ELSE 0 END as value,\n'Brenner:Brenner_aktiv(8)' as metric\nFrom history\nWHERE\n  $__timeFilter(TIMESTAMP) AND\n  DEVICE = 'vitoconnect' AND\n  READING = 'Brenner_aktiv'\nORDER BY TIMESTAMP asc\n",
+          "refId": "C",
           "select": [
             [
               {
@@ -966,7 +973,7 @@
           "logBase": 1,
           "max": null,
           "min": null,
-          "show": true
+          "show": false
         }
       ],
       "yaxis": {
@@ -990,5 +997,5 @@
   "timezone": "",
   "title": "Heizung Krün",
   "uid": "fRoqQB_Mz",
-  "version": 33
+  "version": 42
 }
