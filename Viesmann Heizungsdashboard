@@ -12,6 +12,7 @@
       }
     ]
   },
+  "description": "",
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
@@ -110,7 +111,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:2238",
           "format": "short",
           "label": " °C",
           "logBase": 1,
@@ -119,208 +119,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:2239",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {
-        "Kollektor": "orange",
-        "Speicher Solar (unten)": "blue",
-        "Speicher WW (oben)": "red"
-      },
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": null,
-      "description": "",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
-      "fill": 0,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 9,
-        "w": 23,
-        "x": 0,
-        "y": 9
-      },
-      "hiddenSeries": false,
-      "id": 9,
-      "legend": {
-        "avg": false,
-        "current": true,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "7.5.2",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "format": "time_series",
-          "group": [],
-          "hide": false,
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT\nUNIX_TIMESTAMP(`TIMESTAMP`) as time_sec,\n  CAST(`VALUE` AS DECIMAL(10, 6)) as value,\n  'Speicher WW (oben)' as metric\nFROM `history`\n\nWHERE\n  $__timeFilter(TIMESTAMP) AND\n  DEVICE = 'vitoconnect' AND\n  READING = 'WW-Isttemperatur'\nORDER BY TIMESTAMP",
-          "refId": "D",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "column"
-              }
-            ]
-          ],
-          "timeColumn": "time",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        },
-        {
-          "format": "time_series",
-          "group": [],
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT\nUNIX_TIMESTAMP(`TIMESTAMP`) as time_sec,\n  CAST(`VALUE` AS DECIMAL(10, 6)) as value,\n  'Kollektor' as metric\nFROM `history`\n\nWHERE\n  $__timeFilter(TIMESTAMP) AND\n  DEVICE = 'vitoconnect' AND\n  READING = 'Solar_Sensor_Temperatur_Kollektor'\nORDER BY TIMESTAMP\n\n",
-          "refId": "A",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "column"
-              }
-            ]
-          ],
-          "timeColumn": "time",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        },
-        {
-          "format": "time_series",
-          "group": [],
-          "hide": false,
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT\nUNIX_TIMESTAMP(`TIMESTAMP`) as time_sec,\n  CAST(`VALUE` AS DECIMAL(10, 6)) as value,\n  'Speicher Solar (unten)' as metric\nFROM `history`\n\nWHERE\n  $__timeFilter(TIMESTAMP) AND\n  DEVICE = 'vitoconnect' AND\n  READING = 'Solar_Sensor_Temperatur_WW'\nORDER BY TIMESTAMP",
-          "refId": "B",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "column"
-              }
-            ]
-          ],
-          "timeColumn": "time",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        },
-        {
-          "format": "time_series",
-          "group": [],
-          "hide": false,
-          "metricColumn": "none",
-          "rawQuery": false,
-          "rawSql": "SELECT\n  UNIX_TIMESTAMP(<time_column>) as time_sec,\n  <value column> as value,\n  <series name column> as metric\nFROM <table name>\nWHERE $__timeFilter(time_column)\nORDER BY <time_column> ASC\n",
-          "refId": "C",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "column"
-              }
-            ]
-          ],
-          "timeColumn": "time",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Solarthermie",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:942",
-          "format": "short",
-          "label": "°C",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "$$hashKey": "object:943",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -357,7 +155,7 @@
         "h": 9,
         "w": 23,
         "x": 0,
-        "y": 18
+        "y": 9
       },
       "hiddenSeries": false,
       "id": 11,
@@ -383,12 +181,10 @@
       "renderer": "flot",
       "seriesOverrides": [
         {
-          "$$hashKey": "object:2483",
           "alias": "HK2 Pumpe:aktiv(15)",
           "fill": 0
         },
         {
-          "$$hashKey": "object:2503",
           "alias": "HK3 Pumpe:aktiv(5)",
           "fill": 0
         }
@@ -553,7 +349,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:2121",
           "format": "short",
           "label": " °C",
           "logBase": 1,
@@ -562,7 +357,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:2122",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -582,11 +376,445 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 27
+        "y": 18
       },
       "id": 7,
       "title": "Row title",
       "type": "row"
+    },
+    {
+      "aliasColors": {
+        "Kollektor": "orange",
+        "Speicher Solar (unten)": "blue",
+        "Speicher WW (oben)": "red"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "fill": 0,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 9,
+        "w": 23,
+        "x": 0,
+        "y": 19
+      },
+      "hiddenSeries": false,
+      "id": 9,
+      "legend": {
+        "avg": false,
+        "current": true,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.2",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "format": "time_series",
+          "group": [],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\nUNIX_TIMESTAMP(`TIMESTAMP`) as time_sec,\n  CAST(`VALUE` AS DECIMAL(10, 6)) as value,\n  'Speicher WW (oben)' as metric\nFROM `history`\n\nWHERE\n  $__timeFilter(TIMESTAMP) AND\n  DEVICE = 'vitoconnect' AND\n  READING = 'WW-Isttemperatur'\nORDER BY TIMESTAMP",
+          "refId": "D",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\nUNIX_TIMESTAMP(`TIMESTAMP`) as time_sec,\n  CAST(`VALUE` AS DECIMAL(10, 6)) as value,\n  'Kollektor' as metric\nFROM `history`\n\nWHERE\n  $__timeFilter(TIMESTAMP) AND\n  DEVICE = 'vitoconnect' AND\n  READING = 'Solar_Sensor_Temperatur_Kollektor'\nORDER BY TIMESTAMP\n\n",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "format": "time_series",
+          "group": [],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\nUNIX_TIMESTAMP(`TIMESTAMP`) as time_sec,\n  CAST(`VALUE` AS DECIMAL(10, 6)) as value,\n  'Speicher Solar (unten)' as metric\nFROM `history`\n\nWHERE\n  $__timeFilter(TIMESTAMP) AND\n  DEVICE = 'vitoconnect' AND\n  READING = 'Solar_Sensor_Temperatur_WW'\nORDER BY TIMESTAMP",
+          "refId": "B",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "format": "time_series",
+          "group": [],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  UNIX_TIMESTAMP(<time_column>) as time_sec,\n  <value column> as value,\n  <series name column> as metric\nFROM <table name>\nWHERE $__timeFilter(time_column)\nORDER BY <time_column> ASC\n",
+          "refId": "C",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Solarthermie",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "°C",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
+        "Anschluss Speicher mitte": "purple",
+        "Eingang Speicher oben": "orange",
+        "Frischwasser Vorlauf": "green",
+        "Viesmann WW-Ist": "red",
+        "Viesmann WW-Soll": "rgb(190, 184, 183)"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "description": "Viessmann Temperaturen und zusätzliche Dallas Sensoren",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 9,
+        "w": 23,
+        "x": 0,
+        "y": 28
+      },
+      "hiddenSeries": false,
+      "id": 13,
+      "legend": {
+        "avg": false,
+        "current": true,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.2",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "Viesmann WW-Soll",
+          "fill": 0,
+          "lines": true,
+          "linewidth": 1
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\r\nUNIX_TIMESTAMP(`TIMESTAMP`) as time_sec,\r\n  CAST(`VALUE` AS DECIMAL(10, 6)) as value,\r\n  'Eingang Speicher oben' as metric\r\nFROM `history`\r\n\r\nWHERE\r\n  $__timeFilter(TIMESTAMP) AND\r\n  DEVICE = 'ESPEasy_Heizung_NodeMCU_V1_Speicher_Eingang_Oben' AND\r\n  READING = 'Temperature'\r\nORDER BY TIMESTAMP\r\n",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "format": "time_series",
+          "group": [],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\r\nUNIX_TIMESTAMP(`TIMESTAMP`) as time_sec,\r\n  CAST(`VALUE` AS DECIMAL(10, 6)) as value,\r\n  'Anschluss Speicher mitte' as metric\r\nFROM `history`\r\n\r\nWHERE\r\n  $__timeFilter(TIMESTAMP) AND\r\n  DEVICE = 'ESPEasy_Heizung_NodeMCU_V1_Speicher_Eingang_Mitte' AND\r\n  READING = 'Temperature'\r\nORDER BY TIMESTAMP\r\n",
+          "refId": "C",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "format": "time_series",
+          "group": [],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\r\nUNIX_TIMESTAMP(`TIMESTAMP`) as time_sec,\r\n  CAST(`VALUE` AS DECIMAL(10, 6)) as value,\r\n  'Frischwasser Vorlauf' as metric\r\nFROM `history`\r\n\r\nWHERE\r\n  $__timeFilter(TIMESTAMP) AND\r\n  DEVICE = 'ESPEasy_Heizung_NodeMCU_V1_Warmwasser_Vorlauf' AND\r\n  READING = 'Temperature'\r\nORDER BY TIMESTAMP\r\n",
+          "refId": "B",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "format": "time_series",
+          "group": [],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\r\nUNIX_TIMESTAMP(`TIMESTAMP`) as time_sec,\r\n  CAST(`VALUE` AS DECIMAL(10, 6)) as value,\r\n  'Viesmann WW-Ist' as metric\r\nFROM `history`\r\n\r\nWHERE\r\n  $__timeFilter(TIMESTAMP) AND\r\n  DEVICE = 'vitoconnect' AND\r\n  READING = 'WW-Isttemperatur'\r\nORDER BY TIMESTAMP\r\n",
+          "refId": "D",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "format": "time_series",
+          "group": [],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\r\nUNIX_TIMESTAMP(`TIMESTAMP`) as time_sec,\r\n  CAST(`VALUE` AS DECIMAL(10, 6)) as value,\r\n  'Viesmann WW-Soll' as metric\r\nFROM `history`\r\n\r\nWHERE\r\n  $__timeFilter(TIMESTAMP) AND\r\n  DEVICE = 'vitoconnect' AND\r\n  READING = 'WW-Solltemperatur'\r\nORDER BY TIMESTAMP\r\n",
+          "refId": "E",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Schichtspeicher",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
     },
     {
       "aliasColors": {
@@ -609,7 +837,7 @@
         "h": 9,
         "w": 23,
         "x": 0,
-        "y": 28
+        "y": 37
       },
       "hiddenSeries": false,
       "id": 3,
@@ -635,13 +863,11 @@
       "renderer": "flot",
       "seriesOverrides": [
         {
-          "$$hashKey": "object:857",
           "alias": "Volumensensor",
           "fill": 0,
           "yaxis": 2
         },
         {
-          "$$hashKey": "object:1886",
           "alias": "Modulation",
           "fill": 0
         }
@@ -710,7 +936,7 @@
           "hide": false,
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\nUNIX_TIMESTAMP(`TIMESTAMP`) as time_sec,\n  CAST(`VALUE` AS DECIMAL(10, 6)) as value, \n  'Modulation' as metric\nFROM `history`\n\nWHERE\n  $__timeFilter(TIMESTAMP) AND\n  DEVICE = 'vitoconnect' AND\n  READING = 'Brenner_Modulation'\nORDER BY TIMESTAMP\n",
+          "rawSql": "SELECT\nUNIX_TIMESTAMP(`TIMESTAMP`) as time_sec,\n  CAST(`VALUE` AS DECIMAL(10, 6)) as value, \n  'Modulation' as metric\nFROM `history`\n\nWHERE\n  $__timeFilter(TIMESTAMP) AND\n  DEVICE = 'vitoconnect' AND\n  READING like 'Brenner_%Modulation'\nORDER BY TIMESTAMP\n",
           "refId": "C",
           "select": [
             [
@@ -779,7 +1005,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:561",
           "format": "short",
           "label": "°C und %",
           "logBase": 1,
@@ -788,7 +1013,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:562",
           "format": "short",
           "label": "l/h",
           "logBase": 1,
@@ -825,7 +1049,7 @@
         "h": 6,
         "w": 23,
         "x": 0,
-        "y": 37
+        "y": 46
       },
       "hiddenSeries": false,
       "id": 5,
@@ -916,7 +1140,7 @@
           "hide": false,
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "Select \nUNIX_TIMESTAMP(`TIMESTAMP`) as time_sec,\nCASE WHEN value = '1' then 8 ELSE 0 END as value,\n'Brenner:Brenner_aktiv(8)' as metric\nFrom history\nWHERE\n  $__timeFilter(TIMESTAMP) AND\n  DEVICE = 'vitoconnect' AND\n  READING = 'Brenner_aktiv'\nORDER BY TIMESTAMP asc\n",
+          "rawSql": "Select \nUNIX_TIMESTAMP(`TIMESTAMP`) as time_sec,\nCASE WHEN value = '1' then 8 ELSE 0 END as value,\n'Brenner:Brenner_aktiv(8)' as metric\nFrom history\nWHERE\n  $__timeFilter(TIMESTAMP) AND\n  DEVICE = 'vitoconnect' AND\n  READING like 'Brenner_%aktiv'\nORDER BY TIMESTAMP asc\n",
           "refId": "C",
           "select": [
             [
@@ -958,7 +1182,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:151",
           "format": "short",
           "label": "Schaltzustände",
           "logBase": 1,
@@ -967,7 +1190,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:152",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -997,5 +1219,5 @@
   "timezone": "",
   "title": "Heizung Krün",
   "uid": "fRoqQB_Mz",
-  "version": 42
+  "version": 48
 }
