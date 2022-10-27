@@ -3,31 +3,39 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
         "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
         "type": "dashboard"
       }
     ]
   },
-  "description": "",
   "editable": true,
-  "gnetId": null,
+  "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
   "id": 2,
   "links": [],
+  "liveNow": false,
   "panels": [
     {
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
+      "datasource": {
+        "type": "mysql",
+        "uid": "VR_V-b_Mk"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -55,7 +63,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.2",
+      "pluginVersion": "8.5.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -92,9 +100,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Aussentemperatur Krün Nordseite",
       "tooltip": {
         "shared": true,
@@ -103,33 +109,27 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
+          "$$hashKey": "object:2238",
           "format": "short",
           "label": " °C",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
+          "$$hashKey": "object:2239",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -144,10 +144,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
+      "datasource": {
+        "type": "mysql",
+        "uid": "VR_V-b_Mk"
       },
       "fill": 0,
       "fillGradient": 0,
@@ -175,16 +174,18 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.2",
+      "pluginVersion": "8.5.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [
         {
+          "$$hashKey": "object:2483",
           "alias": "HK2 Pumpe:aktiv(15)",
           "fill": 0
         },
         {
+          "$$hashKey": "object:2503",
           "alias": "HK3 Pumpe:aktiv(5)",
           "fill": 0
         }
@@ -330,9 +331,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Heizungkreislauf Informationen",
       "tooltip": {
         "shared": true,
@@ -341,37 +340,34 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
+          "$$hashKey": "object:2121",
           "format": "short",
           "label": " °C",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
+          "$$hashKey": "object:2122",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "mysql",
+        "uid": "VR_V-b_Mk"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -391,12 +387,11 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
-      "description": "",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
+      "datasource": {
+        "type": "mysql",
+        "uid": "VR_V-b_Mk"
       },
+      "description": "",
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -423,7 +418,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.2",
+      "pluginVersion": "8.5.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -541,9 +536,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Solarthermie",
       "tooltip": {
         "shared": true,
@@ -552,33 +545,27 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
+          "$$hashKey": "object:942",
           "format": "short",
           "label": "°C",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
+          "$$hashKey": "object:943",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -592,16 +579,15 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
-      "description": "Viessmann Temperaturen und zusätzliche Dallas Sensoren",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
+      "datasource": {
+        "type": "mysql",
+        "uid": "VR_V-b_Mk"
       },
+      "description": "Viessmann Temperaturen und zusätzliche Dallas Sensoren",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 9,
+        "h": 7,
         "w": 23,
         "x": 0,
         "y": 28
@@ -624,12 +610,13 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.2",
+      "pluginVersion": "8.5.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [
         {
+          "$$hashKey": "object:213",
           "alias": "Viesmann WW-Soll",
           "fill": 0,
           "lines": true,
@@ -776,9 +763,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Schichtspeicher",
       "tooltip": {
         "shared": true,
@@ -787,33 +772,24 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -826,10 +802,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
+      "datasource": {
+        "type": "mysql",
+        "uid": "VR_V-b_Mk"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -837,7 +812,7 @@
         "h": 9,
         "w": 23,
         "x": 0,
-        "y": 37
+        "y": 35
       },
       "hiddenSeries": false,
       "id": 3,
@@ -857,17 +832,19 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.2",
+      "pluginVersion": "8.5.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [
         {
+          "$$hashKey": "object:857",
           "alias": "Volumensensor",
           "fill": 0,
           "yaxis": 2
         },
         {
+          "$$hashKey": "object:1886",
           "alias": "Modulation",
           "fill": 0
         }
@@ -986,9 +963,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Kessel und Brennerdaten",
       "tooltip": {
         "shared": true,
@@ -997,14 +972,13 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
+          "$$hashKey": "object:561",
           "format": "short",
           "label": "°C und %",
           "logBase": 1,
@@ -1013,17 +987,16 @@
           "show": true
         },
         {
+          "$$hashKey": "object:562",
           "format": "short",
           "label": "l/h",
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1037,19 +1010,18 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
-      "description": "Kessel 3 Wege Ventil: 10 = Heizung; 20=Warmwasser ",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
+      "datasource": {
+        "type": "mysql",
+        "uid": "VR_V-b_Mk"
       },
+      "description": "Kessel 3 Wege Ventil: 10 = Heizung; 20=Warmwasser ",
       "fill": 1,
       "fillGradient": 4,
       "gridPos": {
         "h": 6,
         "w": 23,
         "x": 0,
-        "y": 46
+        "y": 44
       },
       "hiddenSeries": false,
       "id": 5,
@@ -1071,7 +1043,7 @@
         "alertThreshold": false
       },
       "percentage": false,
-      "pluginVersion": "7.5.2",
+      "pluginVersion": "8.5.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1163,9 +1135,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Gastherme \"Schalterstellungen\"",
       "tooltip": {
         "shared": true,
@@ -1174,38 +1144,32 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
+          "$$hashKey": "object:151",
           "format": "short",
           "label": "Schaltzustände",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
+          "$$hashKey": "object:152",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": false
         }
       ],
       "yaxis": {
-        "align": true,
-        "alignLevel": null
+        "align": true
       }
     }
   ],
   "refresh": false,
-  "schemaVersion": 27,
+  "schemaVersion": 36,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -1219,5 +1183,6 @@
   "timezone": "",
   "title": "Heizung Krün",
   "uid": "fRoqQB_Mz",
-  "version": 48
+  "version": 51,
+  "weekStart": ""
 }
